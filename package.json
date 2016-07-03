@@ -1,0 +1,29 @@
+{
+  "name": "rxflux",
+  "version": "1.0.0",
+  "description": "a diy flux implementation using rxjs 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrei-cacio/rxflux.git"
+  },
+  "keywords": [
+    "flux",
+    "rx"
+  ],
+  "author": "Andrei Cacio <andrei.cacio@yahoo.com> (http://andreicacio.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrei-cacio/rxflux/issues"
+  },
+  "homepage": "https://github.com/andrei-cacio/rxflux#readme",
+  "dependencies": {
+    "rxjs-es": "^5.0.0-beta.9"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.1"
+  }
+}
