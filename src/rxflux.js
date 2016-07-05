@@ -1,5 +1,3 @@
-const dispatchSubject = new Rx.Subject();
-
 //action-types
 const INCREMENT = 'increment';
 const DECREMENT = 'decrement';
@@ -47,18 +45,3 @@ increment();
 
 decrement();
 decrement();
-
-
-//core
-function createStore(obj) {
-	const stateSubject = new Rx.BehaviorSubject(obj.initialState);
-
-	dispatchSubject.subscribe(actionDispatch => {
-		if (obj.actionMap.hasOwnProperty(actionDispatch.action)) {
-			obj.initialState = obj.actionMap[actionDispatch.action](obj.initialState, actionDispatch.payload);
-	    stateSubject.next(obj.initialState);
-	  }
-	});
-
-	return stateSubject;
-}
