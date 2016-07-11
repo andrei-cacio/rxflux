@@ -1,4 +1,4 @@
-import core from '../../src/core';
+import core from '../rxflux/core';
 import { increment, decrement } from './actions';
 import counterStore from './store';
 
