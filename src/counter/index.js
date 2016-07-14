@@ -1,10 +1,5 @@
-import core from '../rxflux/core';
-import { increment, decrement } from './actions';
-import counterStore from './store';
+import React from 'react';
+import { render } from 'react-dom';
+import App from './components';
 
-const observableCounterStore = core.createStore(counterStore);
-observableCounterStore.subscribe(newState => console.log(newState));
-
-increment();
-increment();
-decrement();
+render(<App />, document.getElementById('counterApp'));
