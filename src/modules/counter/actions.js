@@ -1,4 +1,4 @@
-import core from '../rxflux/core';
+import core from '../../rxflux/core';
 import { DECREMENT, INCREMENT } from './action-types';
 
 export function decrement() {

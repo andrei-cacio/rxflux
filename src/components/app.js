@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import Immutable from 'immutable';
-import core from '../../rxflux/core';
-import * as counterActions from '../actions';
-import counterStore from '../store';
+import * as counter from '../modules/counter';
 
-const observableCounterStore = core.createStore(counterStore);
 const style = {
   container: {
     margin: '0 auto',
@@ -33,15 +30,15 @@ export default class App extends Component {
   }
 
   increment() {
-    counterActions.increment();
+    counter.actions.increment();
   }
 
   decrement() {
-    counterActions.decrement();
+    counter.actions.decrement();
   }
 
   componentDidMount() {
-    observableCounterStore.subscribe(newState => {
+    counter.store.subscribe(newState => {
       this.setState({ data: newState });
     });
   }
