@@ -32,4 +32,3 @@ export function evaluateGetter(getter) {
   return handler.call(null, getterValue);
 }
 
-window.evaluateGetter = evaluateGetter;
