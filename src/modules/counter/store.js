@@ -8,7 +8,7 @@ const counterStore = {
   }
 };
 
-function doIncrement(state) {
+function doIncrement(state) { 
   return state.update('counter', counter => ++counter);
 }
 

@@ -1,31 +1,35 @@
 import { BehaviorSubject } from 'rxjs';
 import Immutable from 'immutable';
 import dispatcher from './dispatcher';
+import { basicCacheCreate } from './cache';
 
-let globalState = Immutable.fromJS({
-  stores: {},
-  state: {}
-});
+const fluxCache = basicCacheCreate();
 
-export default function createStore(name, obj) {
-  const initialState = Immutable.fromJS(obj.initialState);
+export default function createStore(name, config) {
+  const initialState = Immutable.fromJS(config.initialState);
   const stateSubject = new BehaviorSubject(initialState);
 
-  globalState = globalState
-    .update('stores', stores => stores.set(name, obj))
-    .update('state', state => state.set(name, initialState));
+  fluxCache.setState({ name, initialState });
 
   dispatcher.subscribe(actionDispatch => {
-    const prevState = globalState.get('state').get(storeId);
-		if (obj.actionMap.hasOwnProperty(actionDispatch.action)) {
-			const newState = obj.actionMap[actionDispatch.action](prevState, actionDispatch.payload);
+    const prevState = fluxCache.getState().get(name);
 
-      globalState = globalState
-        .update('state', state => state.update(storeId, store => store.merge(newState)));
-      
+		if (config.actionMap.hasOwnProperty(actionDispatch.action)) {
+			const newState = config.actionMap[actionDispatch.action](prevState, actionDispatch.payload);
+
+      fluxCache.updateState({ name, newState });
 	    stateSubject.next(newState);
 	  }
 	});
 
 	return stateSubject;
 }
+
+export function evaluateGetter(getter) {
+  const [path, handler] = getter;
+
+  const getterValue = fluxCache.getIn(path);
+  return handler.call(null, getterValue);
+}
+
+window.evaluateGetter = evaluateGetter;
