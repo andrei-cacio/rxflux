@@ -2,7 +2,7 @@
   "name": "rxflux",
   "version": "1.0.0",
   "description": "a diy flux implementation using rxjs 5",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "mocha test --compilers js:babel-core/register",
     "cover": "nyc npm t",

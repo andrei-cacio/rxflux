@@ -2,4 +2,3 @@
 *.log
 *.sublime-*
 node_modules
-dist
