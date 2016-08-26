@@ -14,4 +14,4 @@ var _dispatcher2 = _interopRequireDefault(_dispatcher);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = { createStore: _store2.default, dispatcher: _dispatcher2.default };
+exports.default = { createStore: _store2.default, dispatcher: _dispatcher2.default, evaluate: _store.evaluate };

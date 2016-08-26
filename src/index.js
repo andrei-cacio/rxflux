@@ -1,4 +1,4 @@
-import createStore from './store';
+import createStore, { evaluate } from './store';
 import dispatcher from './dispatcher';
 
-export default { createStore, dispatcher };
+export default { createStore, dispatcher, evaluate };
